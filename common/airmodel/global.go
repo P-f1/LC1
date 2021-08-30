@@ -12,7 +12,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/TIBCOSoftware/labs-flogo-lib/util"
+	"github.com/P-f1/LC/common/util"
 )
 
 /* Contributes */
