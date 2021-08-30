@@ -1,0 +1,1003 @@
+{
+    "imports": [
+        "github.com/project-flogo/flow",
+        "github.com/project-flogo/contrib/activity/log",
+        "github.com/project-flogo/flow/activity/subflow",
+        "github.com/project-flogo/contrib/activity/actreturn",
+        "log_1 git.tibco.com/git/product/ipaas/wi-contrib.git/contributions/General/activity/log",
+        "git.tibco.com/git/product/ipaas/wi-mqtt.git/Mqtt/trigger/subscribe",
+        "github.com/project-flogo/contrib/function/array"
+    ],
+    "name": "Air_Template3",
+    "description": "",
+    "version": "1.0.0",
+    "type": "flogo:app",
+    "appModel": "1.1.1",
+    "feVersion": "2.9.0",
+    "triggers": [
+        {
+            "ref": "#subscribe",
+            "name": "mqtt-trigger",
+            "description": "Subscribe to an MQTT topic",
+            "settings": {
+                "mqttConnection": {
+                    "type": "flogo:connector",
+                    "version": "1.0.0",
+                    "name": "connection",
+                    "hashTags": [],
+                    "inputMappings": {},
+                    "outputMappings": {},
+                    "iteratorMappings": {},
+                    "title": "MQTT Connector",
+                    "description": "MQTT Connector",
+                    "ref": "git.tibco.com/git/product/ipaas/wi-mqtt.git/Mqtt/connector/connection",
+                    "settings": [
+                        {
+                            "name": "name",
+                            "type": "string",
+                            "required": true,
+                            "display": {
+                                "name": "Connection Name",
+                                "visible": true
+                            },
+                            "value": "IoTMQTT"
+                        },
+                        {
+                            "name": "description",
+                            "type": "string",
+                            "display": {
+                                "name": "Description",
+                                "visible": true
+                            },
+                            "value": ""
+                        },
+                        {
+                            "name": "broker",
+                            "type": "string",
+                            "required": true,
+                            "display": {
+                                "name": "Broker URL",
+                                "visible": true,
+                                "Description": "Enter a broker URL in the form '<protocol>://<host>:<port>'",
+                                "appPropertySupport": true
+                            },
+                            "value": "=$property[\"Mqtt.IoTMQTT.Broker_URL\"]"
+                        },
+                        {
+                            "name": "user",
+                            "type": "string",
+                            "required": false,
+                            "display": {
+                                "name": "Username",
+                                "visible": true,
+                                "Description": "Enter a username if this connection requires one",
+                                "appPropertySupport": true
+                            },
+                            "value": "=$property[\"Mqtt.IoTMQTT.Username\"]"
+                        },
+                        {
+                            "name": "password",
+                            "type": "string",
+                            "required": false,
+                            "display": {
+                                "name": "Password",
+                                "visible": true,
+                                "type": "password",
+                                "encryptable": true,
+                                "Description": "Enter a password if this connection requires one",
+                                "appPropertySupport": true
+                            },
+                            "value": "=$property[\"Mqtt.IoTMQTT.Password\"]"
+                        },
+                        {
+                            "name": "encryptionMode",
+                            "type": "string",
+                            "display": {
+                                "name": "Encryption Mode",
+                                "description": "Choose the type of authentication to use"
+                            },
+                            "allowed": [
+                                "None",
+                                "TLS-Cert",
+                                "TLS-ClientAuth"
+                            ],
+                            "value": "None"
+                        },
+                        {
+                            "name": "cacert",
+                            "type": "string",
+                            "required": false,
+                            "display": {
+                                "name": "Cacert",
+                                "description": "Select the CA certificate file used to sign the broker's certificate",
+                                "visible": false,
+                                "type": "fileselector",
+                                "fileExtensions": [
+                                    ".crt",
+                                    ".cert",
+                                    ".pem"
+                                ],
+                                "readonly": false,
+                                "valid": true
+                            },
+                            "value": ""
+                        },
+                        {
+                            "name": "clientcert",
+                            "type": "string",
+                            "required": false,
+                            "display": {
+                                "name": "Client Cert",
+                                "description": "Select the client certificate file for connections requiring client auth",
+                                "visible": false,
+                                "type": "fileselector",
+                                "fileExtensions": [
+                                    ".crt",
+                                    ".cert",
+                                    ".pem"
+                                ],
+                                "readonly": false,
+                                "valid": true
+                            },
+                            "value": ""
+                        },
+                        {
+                            "name": "clientkey",
+                            "type": "string",
+                            "required": false,
+                            "display": {
+                                "name": "Client Key",
+                                "description": "Select the client key file used for connections requiring client auth",
+                                "visible": false,
+                                "type": "fileselector",
+                                "fileExtensions": [
+                                    ".key",
+                                    ".pem"
+                                ],
+                                "readonly": false,
+                                "valid": true
+                            },
+                            "value": ""
+                        }
+                    ],
+                    "outputs": [],
+                    "inputs": [],
+                    "handler": {
+                        "settings": []
+                    },
+                    "reply": [],
+                    "s3Prefix": "Tibco",
+                    "key": "Tibco/Mqtt/connector/connection/connector.json",
+                    "display": {
+                        "description": "MQTT Connector",
+                        "category": "Mqtt",
+                        "smallIcon": "icons/mqtt.png",
+                        "largeIcon": "icons/mqtt.png",
+                        "visible": true
+                    },
+                    "actions": [
+                        {
+                            "name": "Save"
+                        }
+                    ],
+                    "feature": {},
+                    "loopType": "none",
+                    "loopSettings": [],
+                    "retrySettings": [],
+                    "propertyMap": {},
+                    "keyfield": "name",
+                    "iteratorAccumulate": false,
+                    "isValid": true,
+                    "lastUpdatedTime": 1582218974582,
+                    "createdTime": 1582218974582,
+                    "user": "flogo",
+                    "subscriptionId": "flogo_sbsc",
+                    "id": "b2e07bc0-5404-11ea-8f02-2d62b9893e37",
+                    "connectorName": "IoTMQTT",
+                    "connectorDescription": " "
+                }
+            },
+            "id": "MQTTSubscriber",
+            "handlers": [
+                {
+                    "description": "",
+                    "settings": {
+                        "topic": "=$property[\"MQTTTrigger.Topic\"]",
+                        "qos": "=$property[\"MQTTTrigger.MaximumQOS\"]",
+                        "valueType": "JSON",
+                        "showwill": false,
+                        "will": "",
+                        "willtopic": "",
+                        "willqos": 0,
+                        "willretain": false
+                    },
+                    "action": {
+                        "ref": "github.com/project-flogo/flow",
+                        "settings": {
+                            "flowURI": "res://flow:DataSource"
+                        },
+                        "input": {
+                            "topic": "=$.topic",
+                            "retained": "=$.retained",
+                            "duplicate": "=$.duplicate",
+                            "qos": "=$.qos",
+                            "messageID": "=$.messageID",
+                            "data": "=$.jsonValue"
+                        }
+                    },
+                    "schemas": {
+                        "output": {
+                            "jsonValue": {
+                                "type": "json",
+                                "value": "{\n            \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n            \"type\": \"object\",\n            \"properties\": {\n                \"gateway\": {\n                    \"type\": \"string\"\n                },\n                \"core\": {\n                    \"type\": \"array\",\n                    \"items\": {\n                        \"type\": \"object\",\n                        \"properties\": {\n                            \"id\": {\n                                \"type\": \"string\"\n                            },\n                            \"origin\": {\n                                \"type\": \"number\"\n                            },\n                            \"device\": {\n                                \"type\": \"string\"\n                            },\n                            \"name\": {\n                                \"type\": \"string\"\n                            },\n                            \"value\": {\n                                \"type\": \"string\"\n                            },\n                            \"valueType\": {\n                                \"type\": \"string\"\n                            }\n                        }\n                    }\n                }\n            }\n        }",
+                                "fe_metadata": "{\n            \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n            \"type\": \"object\",\n            \"properties\": {\n                \"gateway\": {\n                    \"type\": \"string\"\n                },\n                \"core\": {\n                    \"type\": \"array\",\n                    \"items\": {\n                        \"type\": \"object\",\n                        \"properties\": {\n                            \"id\": {\n                                \"type\": \"string\"\n                            },\n                            \"origin\": {\n                                \"type\": \"number\"\n                            },\n                            \"device\": {\n                                \"type\": \"string\"\n                            },\n                            \"name\": {\n                                \"type\": \"string\"\n                            },\n                            \"value\": {\n                                \"type\": \"string\"\n                            },\n                            \"valueType\": {\n                                \"type\": \"string\"\n                            }\n                        }\n                    }\n                }\n            }\n        }"
+                            }
+                        }
+                    },
+                    "name": "DataSource"
+                }
+            ]
+        }
+    ],
+    "resources": [
+        {
+            "id": "flow:Filter_0",
+            "data": {
+                "name": "Filter_0",
+                "description": "",
+                "links": [
+                    {
+                        "id": 1,
+                        "from": "Log",
+                        "to": "Next_Flow",
+                        "type": "default"
+                    },
+                    {
+                        "id": 2,
+                        "from": "Next_Flow",
+                        "to": "Return",
+                        "type": "default"
+                    }
+                ],
+                "tasks": [
+                    {
+                        "id": "Log",
+                        "name": "Log",
+                        "description": "Logs a message",
+                        "activity": {
+                            "ref": "#log",
+                            "input": {
+                                "message": "########## Filter ##########",
+                                "addDetails": false
+                            }
+                        }
+                    },
+                    {
+                        "id": "Next_Flow",
+                        "name": "Next_Flow",
+                        "description": "Simple SubFlow Activity",
+                        "activity": {
+                            "ref": "#subflow",
+                            "settings": {
+                                "flowURI": "res://flow:Aggregate_1"
+                            },
+                            "input": {
+                                "gateway": "=$flow.gateway",
+                                "core": "=$flow.core",
+                                "enriched": {
+                                    "mapping": {
+                                        "@foreach($flow.enriched, enriched)": {
+                                            "=": "$loop"
+                                        }
+                                    }
+                                }
+                            },
+                            "schemas": {
+                                "input": {
+                                    "input": {
+                                        "type": "json",
+                                        "value": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"gateway\":{\"type\":\"string\"},\"core\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"origin\":{\"type\":\"number\"},\"device\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"valueType\":{\"type\":\"string\"}}},\"enriched\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"producer\":{\"type\":\"string\"},\"consumer\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"}}}}}}",
+                                        "fe_metadata": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"gateway\":{\"type\":\"string\"},\"core\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"origin\":{\"type\":\"number\"},\"device\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"valueType\":{\"type\":\"string\"}}},\"enriched\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"producer\":{\"type\":\"string\"},\"consumer\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"}}}}}}"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "id": "Return",
+                        "name": "Return",
+                        "description": "Simple Return Activity",
+                        "activity": {
+                            "ref": "#actreturn"
+                        }
+                    }
+                ],
+                "metadata": {
+                    "input": [
+                        {
+                            "name": "gateway",
+                            "type": "string"
+                        },
+                        {
+                            "name": "core",
+                            "type": "object",
+                            "schema": {
+                                "type": "json",
+                                "value": "{\"id\":{\"type\":\"string\"},\"origin\":{\"type\":\"number\"},\"device\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"valueType\":{\"type\":\"string\"}}"
+                            }
+                        },
+                        {
+                            "name": "enriched",
+                            "type": "array",
+                            "schema": {
+                                "type": "json",
+                                "value": "{\"type\":\"object\",\"properties\":{\"producer\":{\"type\":\"string\"},\"consumer\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"}}}"
+                            }
+                        }
+                    ],
+                    "output": [],
+                    "fe_metadata": {
+                        "input": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"gateway\":{\"type\":\"string\"},\"core\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"origin\":{\"type\":\"number\"},\"device\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"valueType\":{\"type\":\"string\"}}},\"enriched\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"producer\":{\"type\":\"string\"},\"consumer\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"}}}}}}"
+                    }
+                }
+            }
+        },
+        {
+            "id": "flow:Aggregate_1",
+            "data": {
+                "name": "Aggregate_1",
+                "description": "",
+                "links": [
+                    {
+                        "id": 1,
+                        "from": "Log",
+                        "to": "Next_Flow",
+                        "type": "default"
+                    },
+                    {
+                        "id": 2,
+                        "from": "Next_Flow",
+                        "to": "Return",
+                        "type": "default"
+                    }
+                ],
+                "tasks": [
+                    {
+                        "id": "Log",
+                        "name": "Log",
+                        "description": "Logs a message",
+                        "activity": {
+                            "ref": "#log",
+                            "input": {
+                                "message": "########## Aggregate ##########",
+                                "addDetails": false
+                            }
+                        }
+                    },
+                    {
+                        "id": "Next_Flow",
+                        "name": "Next_Flow",
+                        "description": "Simple SubFlow Activity",
+                        "activity": {
+                            "ref": "#subflow",
+                            "settings": {
+                                "flowURI": "res://flow:DataStore_2"
+                            },
+                            "input": {
+                                "gateway": "=$flow.gateway",
+                                "core": "=$flow.core",
+                                "enriched": {
+                                    "mapping": {
+                                        "@foreach($flow.enriched, enriched)": {
+                                            "=": "$loop"
+                                        }
+                                    }
+                                }
+                            },
+                            "schemas": {
+                                "input": {
+                                    "input": {
+                                        "type": "json",
+                                        "value": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"gateway\":{\"type\":\"string\"},\"core\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"origin\":{\"type\":\"number\"},\"device\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"valueType\":{\"type\":\"string\"}}},\"enriched\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"producer\":{\"type\":\"string\"},\"consumer\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"}}}}}}",
+                                        "fe_metadata": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"gateway\":{\"type\":\"string\"},\"core\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"origin\":{\"type\":\"number\"},\"device\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"valueType\":{\"type\":\"string\"}}},\"enriched\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"producer\":{\"type\":\"string\"},\"consumer\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"}}}}}}"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "id": "Return",
+                        "name": "Return",
+                        "description": "Simple Return Activity",
+                        "activity": {
+                            "ref": "#actreturn"
+                        }
+                    }
+                ],
+                "metadata": {
+                    "input": [
+                        {
+                            "name": "gateway",
+                            "type": "string"
+                        },
+                        {
+                            "name": "core",
+                            "type": "object",
+                            "schema": {
+                                "type": "json",
+                                "value": "{\"id\":{\"type\":\"string\"},\"origin\":{\"type\":\"number\"},\"device\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"valueType\":{\"type\":\"string\"}}"
+                            }
+                        },
+                        {
+                            "name": "enriched",
+                            "type": "array",
+                            "schema": {
+                                "type": "json",
+                                "value": "{\"type\":\"object\",\"properties\":{\"producer\":{\"type\":\"string\"},\"consumer\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"}}}"
+                            }
+                        }
+                    ],
+                    "output": [],
+                    "fe_metadata": {
+                        "input": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"gateway\":{\"type\":\"string\"},\"core\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"origin\":{\"type\":\"number\"},\"device\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"valueType\":{\"type\":\"string\"}}},\"enriched\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"producer\":{\"type\":\"string\"},\"consumer\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"}}}}}}"
+                    }
+                }
+            }
+        },
+        {
+            "id": "flow:DataStore_2",
+            "data": {
+                "name": "DataStore_2",
+                "description": "",
+                "links": [
+                    {
+                        "id": 1,
+                        "from": "Log",
+                        "to": "Next_Flow",
+                        "type": "default"
+                    },
+                    {
+                        "id": 2,
+                        "from": "Next_Flow",
+                        "to": "Return",
+                        "type": "default"
+                    }
+                ],
+                "tasks": [
+                    {
+                        "id": "Log",
+                        "name": "Log",
+                        "description": "Logs a message",
+                        "activity": {
+                            "ref": "#log",
+                            "input": {
+                                "message": "########## DataStore ##########",
+                                "addDetails": false
+                            }
+                        }
+                    },
+                    {
+                        "id": "Next_Flow",
+                        "name": "Next_Flow",
+                        "description": "Simple SubFlow Activity",
+                        "activity": {
+                            "ref": "#subflow",
+                            "settings": {
+                                "flowURI": "res://flow:Inference_3"
+                            },
+                            "input": {
+                                "gateway": "=$flow.gateway",
+                                "core": "=$flow.core",
+                                "enriched": {
+                                    "mapping": {
+                                        "@foreach($flow.enriched, enriched)": {
+                                            "=": "$loop"
+                                        }
+                                    }
+                                }
+                            },
+                            "schemas": {
+                                "input": {
+                                    "input": {
+                                        "type": "json",
+                                        "value": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"gateway\":{\"type\":\"string\"},\"core\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"origin\":{\"type\":\"number\"},\"device\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"valueType\":{\"type\":\"string\"}}},\"enriched\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"producer\":{\"type\":\"string\"},\"consumer\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"}}}}}}",
+                                        "fe_metadata": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"gateway\":{\"type\":\"string\"},\"core\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"origin\":{\"type\":\"number\"},\"device\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"valueType\":{\"type\":\"string\"}}},\"enriched\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"producer\":{\"type\":\"string\"},\"consumer\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"}}}}}}"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "id": "Return",
+                        "name": "Return",
+                        "description": "Simple Return Activity",
+                        "activity": {
+                            "ref": "#actreturn"
+                        }
+                    }
+                ],
+                "metadata": {
+                    "input": [
+                        {
+                            "name": "gateway",
+                            "type": "string"
+                        },
+                        {
+                            "name": "core",
+                            "type": "object",
+                            "schema": {
+                                "type": "json",
+                                "value": "{\"id\":{\"type\":\"string\"},\"origin\":{\"type\":\"number\"},\"device\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"valueType\":{\"type\":\"string\"}}"
+                            }
+                        },
+                        {
+                            "name": "enriched",
+                            "type": "array",
+                            "schema": {
+                                "type": "json",
+                                "value": "{\"type\":\"object\",\"properties\":{\"producer\":{\"type\":\"string\"},\"consumer\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"}}}"
+                            }
+                        }
+                    ],
+                    "output": [],
+                    "fe_metadata": {
+                        "input": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"gateway\":{\"type\":\"string\"},\"core\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"origin\":{\"type\":\"number\"},\"device\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"valueType\":{\"type\":\"string\"}}},\"enriched\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"producer\":{\"type\":\"string\"},\"consumer\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"}}}}}}"
+                    }
+                }
+            }
+        },
+        {
+            "id": "flow:Inference_3",
+            "data": {
+                "name": "Inference_3",
+                "description": "",
+                "links": [
+                    {
+                        "id": 1,
+                        "from": "Log",
+                        "to": "Next_Flow",
+                        "type": "default"
+                    },
+                    {
+                        "id": 2,
+                        "from": "Next_Flow",
+                        "to": "Return",
+                        "type": "default"
+                    }
+                ],
+                "tasks": [
+                    {
+                        "id": "Log",
+                        "name": "Log",
+                        "description": "Logs a message",
+                        "activity": {
+                            "ref": "#log",
+                            "input": {
+                                "message": "########## Inference ##########",
+                                "addDetails": false
+                            }
+                        }
+                    },
+                    {
+                        "id": "Next_Flow",
+                        "name": "Next_Flow",
+                        "description": "Simple SubFlow Activity",
+                        "activity": {
+                            "ref": "#subflow",
+                            "settings": {
+                                "flowURI": "res://flow:Rule_4"
+                            },
+                            "input": {
+                                "gateway": "=$flow.gateway",
+                                "core": "=$flow.core",
+                                "enriched": {
+                                    "mapping": {
+                                        "@foreach($flow.enriched, enriched)": {
+                                            "=": "$loop"
+                                        }
+                                    }
+                                }
+                            },
+                            "schemas": {
+                                "input": {
+                                    "input": {
+                                        "type": "json",
+                                        "value": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"gateway\":{\"type\":\"string\"},\"core\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"origin\":{\"type\":\"number\"},\"device\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"valueType\":{\"type\":\"string\"}}},\"enriched\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"producer\":{\"type\":\"string\"},\"consumer\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"}}}}}}",
+                                        "fe_metadata": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"gateway\":{\"type\":\"string\"},\"core\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"origin\":{\"type\":\"number\"},\"device\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"valueType\":{\"type\":\"string\"}}},\"enriched\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"producer\":{\"type\":\"string\"},\"consumer\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"}}}}}}"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "id": "Return",
+                        "name": "Return",
+                        "description": "Simple Return Activity",
+                        "activity": {
+                            "ref": "#actreturn"
+                        }
+                    }
+                ],
+                "metadata": {
+                    "input": [
+                        {
+                            "name": "gateway",
+                            "type": "string"
+                        },
+                        {
+                            "name": "core",
+                            "type": "object",
+                            "schema": {
+                                "type": "json",
+                                "value": "{\"id\":{\"type\":\"string\"},\"origin\":{\"type\":\"number\"},\"device\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"valueType\":{\"type\":\"string\"}}"
+                            }
+                        },
+                        {
+                            "name": "enriched",
+                            "type": "array",
+                            "schema": {
+                                "type": "json",
+                                "value": "{\"type\":\"object\",\"properties\":{\"producer\":{\"type\":\"string\"},\"consumer\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"}}}"
+                            }
+                        }
+                    ],
+                    "output": [],
+                    "fe_metadata": {
+                        "input": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"gateway\":{\"type\":\"string\"},\"core\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"origin\":{\"type\":\"number\"},\"device\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"valueType\":{\"type\":\"string\"}}},\"enriched\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"producer\":{\"type\":\"string\"},\"consumer\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"}}}}}}"
+                    }
+                }
+            }
+        },
+        {
+            "id": "flow:Rule_4",
+            "data": {
+                "name": "Rule_4",
+                "description": "",
+                "links": [
+                    {
+                        "id": 1,
+                        "from": "Log",
+                        "to": "Next_Flow",
+                        "type": "default"
+                    },
+                    {
+                        "id": 2,
+                        "from": "Next_Flow",
+                        "to": "Return",
+                        "type": "default"
+                    }
+                ],
+                "tasks": [
+                    {
+                        "id": "Log",
+                        "name": "Log",
+                        "description": "Logs a message",
+                        "activity": {
+                            "ref": "#log",
+                            "input": {
+                                "message": "########## Rule ##########",
+                                "addDetails": false
+                            }
+                        }
+                    },
+                    {
+                        "id": "Next_Flow",
+                        "name": "Next_Flow",
+                        "description": "Simple SubFlow Activity",
+                        "activity": {
+                            "ref": "#subflow",
+                            "settings": {
+                                "flowURI": "res://flow:Pipe_5"
+                            },
+                            "input": {
+                                "gateway": "=$flow.gateway",
+                                "core": "=$flow.core",
+                                "enriched": {
+                                    "mapping": {
+                                        "@foreach($flow.enriched, enriched)": {
+                                            "=": "$loop"
+                                        }
+                                    }
+                                }
+                            },
+                            "schemas": {
+                                "input": {
+                                    "input": {
+                                        "type": "json",
+                                        "value": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"gateway\":{\"type\":\"string\"},\"core\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"origin\":{\"type\":\"number\"},\"device\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"valueType\":{\"type\":\"string\"}}},\"enriched\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"producer\":{\"type\":\"string\"},\"consumer\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"}}}}}}",
+                                        "fe_metadata": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"gateway\":{\"type\":\"string\"},\"core\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"origin\":{\"type\":\"number\"},\"device\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"valueType\":{\"type\":\"string\"}}},\"enriched\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"producer\":{\"type\":\"string\"},\"consumer\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"}}}}}}"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "id": "Return",
+                        "name": "Return",
+                        "description": "Simple Return Activity",
+                        "activity": {
+                            "ref": "#actreturn"
+                        }
+                    }
+                ],
+                "metadata": {
+                    "input": [
+                        {
+                            "name": "gateway",
+                            "type": "string"
+                        },
+                        {
+                            "name": "core",
+                            "type": "object",
+                            "schema": {
+                                "type": "json",
+                                "value": "{\"id\":{\"type\":\"string\"},\"origin\":{\"type\":\"number\"},\"device\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"valueType\":{\"type\":\"string\"}}"
+                            }
+                        },
+                        {
+                            "name": "enriched",
+                            "type": "array",
+                            "schema": {
+                                "type": "json",
+                                "value": "{\"type\":\"object\",\"properties\":{\"producer\":{\"type\":\"string\"},\"consumer\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"}}}"
+                            }
+                        }
+                    ],
+                    "output": [],
+                    "fe_metadata": {
+                        "input": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"gateway\":{\"type\":\"string\"},\"core\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"origin\":{\"type\":\"number\"},\"device\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"valueType\":{\"type\":\"string\"}}},\"enriched\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"producer\":{\"type\":\"string\"},\"consumer\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"}}}}}}"
+                    }
+                }
+            }
+        },
+        {
+            "id": "flow:Pipe_5",
+            "data": {
+                "name": "Pipe_5",
+                "description": "",
+                "links": [
+                    {
+                        "id": 1,
+                        "from": "Log",
+                        "to": "Return",
+                        "type": "default"
+                    }
+                ],
+                "tasks": [
+                    {
+                        "id": "Log",
+                        "name": "Log",
+                        "description": "Logs a message",
+                        "activity": {
+                            "ref": "#log",
+                            "input": {
+                                "message": "########## Pipe ##########",
+                                "addDetails": false
+                            }
+                        }
+                    },
+                    {
+                        "id": "Return",
+                        "name": "Return",
+                        "description": "Simple Return Activity",
+                        "activity": {
+                            "ref": "#actreturn"
+                        }
+                    }
+                ],
+                "metadata": {
+                    "input": [
+                        {
+                            "name": "gateway",
+                            "type": "string"
+                        },
+                        {
+                            "name": "core",
+                            "type": "object",
+                            "schema": {
+                                "type": "json",
+                                "value": "{\"id\":{\"type\":\"string\"},\"origin\":{\"type\":\"number\"},\"device\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"valueType\":{\"type\":\"string\"}}"
+                            }
+                        },
+                        {
+                            "name": "enriched",
+                            "type": "array",
+                            "schema": {
+                                "type": "json",
+                                "value": "{\"type\":\"object\",\"properties\":{\"producer\":{\"type\":\"string\"},\"consumer\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"}}}"
+                            }
+                        }
+                    ],
+                    "output": [],
+                    "fe_metadata": {
+                        "input": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"gateway\":{\"type\":\"string\"},\"core\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"origin\":{\"type\":\"number\"},\"device\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"valueType\":{\"type\":\"string\"}}},\"enriched\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"producer\":{\"type\":\"string\"},\"consumer\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"}}}}}}"
+                    }
+                }
+            }
+        },
+        {
+            "id": "flow:DataSource",
+            "data": {
+                "name": "DataSource",
+                "description": "",
+                "links": [
+                    {
+                        "id": 1,
+                        "from": "Log",
+                        "to": "Next_Flow",
+                        "type": "default"
+                    },
+                    {
+                        "id": 2,
+                        "from": "Next_Flow",
+                        "to": "Return",
+                        "type": "default"
+                    }
+                ],
+                "tasks": [
+                    {
+                        "id": "Log",
+                        "name": "Log",
+                        "description": "Simple Log Message Activity",
+                        "activity": {
+                            "ref": "#log_1",
+                            "input": {
+                                "Log Level": "=$property[\"Logging.LogLevel\"]",
+                                "flowInfo": false,
+                                "message": "########## DataSource ##########"
+                            }
+                        }
+                    },
+                    {
+                        "id": "Next_Flow",
+                        "name": "Next_Flow",
+                        "description": "Simple SubFlow Activity",
+                        "type": "iterator",
+                        "settings": {
+                            "iterate": "=$flow.data.core",
+                            "accumulate": true
+                        },
+                        "activity": {
+                            "ref": "#subflow",
+                            "settings": {
+                                "flowURI": "res://flow:Filter_0"
+                            },
+                            "input": {
+                                "gateway": "=$flow.data.gateway",
+                                "core": "=$iteration[value]"
+                            },
+                            "schemas": {
+                                "input": {
+                                    "input": {
+                                        "type": "json",
+                                        "value": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"gateway\":{\"type\":\"string\"},\"core\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"origin\":{\"type\":\"number\"},\"device\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"valueType\":{\"type\":\"string\"}}},\"enriched\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"producer\":{\"type\":\"string\"},\"consumer\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"}}}}}}",
+                                        "fe_metadata": "{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"gateway\":{\"type\":\"string\"},\"core\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"origin\":{\"type\":\"number\"},\"device\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"valueType\":{\"type\":\"string\"}}},\"enriched\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"producer\":{\"type\":\"string\"},\"consumer\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"type\":{\"type\":\"string\"}}}}}}"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "id": "Return",
+                        "name": "Return",
+                        "description": "Simple Return Activity",
+                        "activity": {
+                            "ref": "#actreturn"
+                        }
+                    }
+                ],
+                "metadata": {
+                    "input": [
+                        {
+                            "name": "topic",
+                            "type": "string"
+                        },
+                        {
+                            "name": "retained",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "qos",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "duplicate",
+                            "type": "boolean"
+                        },
+                        {
+                            "name": "messageID",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "data",
+                            "type": "object",
+                            "schema": {
+                                "type": "json",
+                                "value": "{\"gateway\":{\"type\":\"string\"},\"core\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"origin\":{\"type\":\"number\"},\"device\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"valueType\":{\"type\":\"string\"}}}}}"
+                            }
+                        }
+                    ],
+                    "output": [],
+                    "fe_metadata": {
+                        "input": "{\"type\":\"object\",\"title\":\"MQTTSubscriber\",\"properties\":{\"topic\":{\"type\":\"string\",\"required\":false},\"retained\":{\"type\":\"boolean\",\"required\":false},\"qos\":{\"type\":\"integer\",\"required\":false},\"duplicate\":{\"type\":\"boolean\",\"required\":false},\"messageID\":{\"type\":\"integer\",\"required\":false},\"data\":{\"$schema\":\"http://json-schema.org/draft-04/schema#\",\"type\":\"object\",\"properties\":{\"gateway\":{\"type\":\"string\"},\"core\":{\"type\":\"array\",\"items\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\"},\"origin\":{\"type\":\"number\"},\"device\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"value\":{\"type\":\"string\"},\"valueType\":{\"type\":\"string\"}}}}}}}}"
+                    }
+                }
+            }
+        }
+    ],
+    "properties": [
+        {
+            "name": "Mqtt.IoTMQTT.Broker_URL",
+            "type": "string",
+            "value": "tcp://a0056dbbadb2f11e99e4c067e42b309c-335014729.us-west-2.elb.amazonaws.com:1883"
+        },
+        {
+            "name": "Mqtt.IoTMQTT.Username",
+            "type": "string",
+            "value": "mqtt_admin"
+        },
+        {
+            "name": "Mqtt.IoTMQTT.Password",
+            "type": "string",
+            "value": "SECRET:E31iukL2O0vNLvu9V/r4imDgFepBuCUl7M8="
+        },
+        {
+            "name": "MQTTTrigger.Topic",
+            "type": "string",
+            "value": "EdgexGatewayData"
+        },
+        {
+            "name": "MQTTTrigger.MaximumQOS",
+            "type": "float64",
+            "value": 2
+        },
+        {
+            "name": "Filtering.DeviceNames",
+            "type": "string",
+            "value": " "
+        },
+        {
+            "name": "Logging.LogLevel",
+            "type": "string",
+            "value": "DEBUG"
+        },
+        {
+            "name": "Streaming.DeviceName",
+            "type": "string",
+            "value": " "
+        },
+        {
+            "name": "Streaming.InstrumentName",
+            "type": "string",
+            "value": " "
+        },
+        {
+            "name": "Streaming.Function",
+            "type": "string",
+            "value": "avg"
+        },
+        {
+            "name": "Streaming.WindowType",
+            "type": "string",
+            "value": "tumbling"
+        },
+        {
+            "name": "Streaming.WindowSize",
+            "type": "float64",
+            "value": 5
+        },
+        {
+            "name": "AnomalyDetectorModel.URL",
+            "type": "string",
+            "value": "http://localhost:5000/anomalydetector/v1.0/timeseries/last/detect"
+        },
+        {
+            "name": "MQTTPub.Topic",
+            "type": "string",
+            "value": "AIRModelScoredData"
+        }
+    ],
+    "connections": {},
+    "contrib": "W3sicmVmIjoiZ2l0aHViLmNvbS9wcm9qZWN0LWZsb2dvL2NvbnRyaWIvYWN0aXZpdHkvbG9nIiwiczNsb2NhdGlvbiI6IntVU0VSSUR9L0RlZmF1bHQvYWN0aXZpdHkvbG9nIn0seyJyZWYiOiJnaXQudGliY28uY29tL2dpdC9wcm9kdWN0L2lwYWFzL3dpLW1xdHQuZ2l0L01xdHQiLCJzM2xvY2F0aW9uIjoiVGliY28vTXF0dCJ9LHsicmVmIjoiZ2l0LnRpYmNvLmNvbS9naXQvcHJvZHVjdC9pcGFhcy93aS1jb250cmliLmdpdC9jb250cmlidXRpb25zL0dlbmVyYWwiLCJzM2xvY2F0aW9uIjoiVGliY28vR2VuZXJhbCJ9XQ==",
+    "fe_metadata": "UEsDBAoAAAAIAMCjNVKrqSRGFQAAABMAAAAIAAAAYXBwLmpzb26rViopykxPTy1yy8kvL1ayio6tBQBQSwECFAAKAAAACADAozVSq6kkRhUAAAATAAAACAAAAAAAAAAAAAAAAAAAAAAAYXBwLmpzb25QSwUGAAAAAAEAAQA2AAAAOwAAAAAA"
+}

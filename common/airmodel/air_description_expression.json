@@ -1,0 +1,22 @@
+{
+	"source": {
+		"name": "DataSource.HTTP",
+		"properties" : [
+			{"Name":"Logging.LogLevel", "Value": "INFO"}
+		]
+	},
+	"logic": [
+		{
+			"name": "Filter.Expression",
+			"properties" : [
+				{"Name":"Logging.LogLevel", "Value": "INFO"}
+			]
+		},
+		{
+			"name": "Pipe.Dummy",
+			"properties" : [
+				{"Name":"Logging.LogLevel", "Value": "INFO"}
+			]
+		}
+	]
+}

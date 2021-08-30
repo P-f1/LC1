@@ -1,0 +1,46 @@
+   {
+        "source": {
+            "name": "DataSource.MQTT",
+            "properties" : [
+                {"Name":"MQTTTrigger.Topic", "Value":"EdgexGatewayData"},
+                {"Name":"MQTTTrigger.MaximumQOS", "Value": "2"},
+                {"Name":"Mqtt.IoTMQTT.Broker_URL", "Value": "tcp://localhost:1883"},
+                {"Name":"Mqtt.IoTMQTT.Username", "Value": "mqtt_admin"},
+                {"Name":"Mqtt.IoTMQTT.Password", "Value": "SECRET:SzHvHYjKw3yPY0qYP766RSyvczQlGbTRXB0="}
+            ]
+        },
+        "logic": [
+            {
+                "name": "Transform.BASE64",
+                "properties" : [
+                    {"Name":"Logging.LogLevel", "Value": "INFO"}
+                ]
+            },
+            {
+                "name": "DataStore.PostgreSQL",
+                "properties" : [
+                    {"Name":"Logging.LogLevel", "Value": "INFO"}
+                ]
+            },
+            {
+                "name": "Pipe.MQTT",
+                "properties" : [
+        			{"Name": "Mqtt.IoTMQTT.Broker_URL", "Value": "tcp://localhost:1883"},
+        			{"Name": "Mqtt.IoTMQTT.Username", "Value": "mqtt_admin"},
+        			{"Name": "Mqtt.IoTMQTT.Password", "Value": "SECRET:79V5PfQgmw5mTglH3kNiNcoeLPJGsx1w7Tw="},
+        			{"Name": "Logging.LogLevel", "Value": "DEBUG"},
+					{"Name": "MQTTPub.Topic", "Value": "AIRModelScoredData01"}
+                ]
+            },
+            {
+                "name": "Pipe.MQTT",
+                "properties" : [
+        			{"Name": "Mqtt.IoTMQTT.Broker_URL", "Value": "tcp://localhost:1883"},
+        			{"Name": "Mqtt.IoTMQTT.Username", "Value": "mqtt_admin"},
+        			{"Name": "Mqtt.IoTMQTT.Password", "Value": "SECRET:79V5PfQgmw5mTglH3kNiNcoeLPJGsx1w7Tw="},
+        			{"Name": "Logging.LogLevel", "Value": "DEBUG"},
+					{"Name": "MQTTPub.Topic", "Value": "AIRModelScoredData02"}
+                ]
+            }
+        ]
+    }

@@ -1,0 +1,23 @@
+{
+    "name": "tool",
+    "type": "flogo:function",
+    "version": "0.1.0",
+    "title": "Tool functions",
+    "description": "Useful tools",
+    "functions": [
+        {
+            "name": "tostring",
+            "description": "conver all types to string",
+            "example": "f1.sostring(12) => '12'",
+            "args": [
+                {
+                    "name": "str",
+                    "type": "string"
+                }
+            ],
+            "return": {
+                "type": "string"
+            }
+        }
+    ]
+}
