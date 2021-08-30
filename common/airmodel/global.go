@@ -12,7 +12,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/P-f1/LC/common/util"
+	"github.com/P-f1/LC1/common/util"
 )
 
 /* Contributes */

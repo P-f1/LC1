@@ -10,8 +10,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/P-f1/LC/common/objectbuilder"
-	"github.com/P-f1/LC/common/util"
+	"github.com/P-f1/LC1/common/objectbuilder"
+	"github.com/P-f1/LC1/common/util"
 	"github.com/TIBCOSoftware/flogo-lib/logger"
 )
 

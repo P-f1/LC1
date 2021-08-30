@@ -1,4 +1,4 @@
-module github.com/P-f1/LC1/common/objectbuilder
+module github.com/P-f1/LC1/common/notification
 
 go 1.14
 

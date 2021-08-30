@@ -13,9 +13,9 @@ import (
 	"strconv"
 	"strings"
 
-	kwr "github.com/TIBCOSoftware/labs-flogo-lib/keywordreplace"
-	"github.com/TIBCOSoftware/labs-flogo-lib/objectbuilder"
-	"github.com/TIBCOSoftware/labs-flogo-lib/util"
+	kwr "github.com/P-f1/LC1/common/keywordreplace"
+	"github.com/P-f1/LC1/common/objectbuilder"
+	"github.com/P-f1/LC1/common/util"
 )
 
 /* DataSource Class */

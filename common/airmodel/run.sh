@@ -1,1 +1,0 @@
-./MQTT_Dgraph-linux_amd64

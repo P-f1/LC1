@@ -7,7 +7,7 @@ import (
 
 	"fmt"
 
-	"github.com/TIBCOSoftware/labs-flogo-lib/util"
+	"github.com/P-f1/LC1/common/util"
 )
 
 const (
