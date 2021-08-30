@@ -8,9 +8,9 @@ package mapping
 import (
 	"sync"
 
+	"github.com/P-f1/LC/common/util"
 	"github.com/TIBCOSoftware/flogo-lib/core/activity"
 	"github.com/TIBCOSoftware/flogo-lib/logger"
-	"github.com/P-f1/LC/labs-graphbuilder-lib/util"
 )
 
 // activityLogger is the default logger for the Filter Activity

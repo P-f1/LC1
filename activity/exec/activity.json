@@ -10,7 +10,7 @@
        "smallIcon": "exec.png",
        "description": "This activity build docker image from Dockerfile"
     },
-	"ref": "github.com/P-f1/LC1/trigger/exec",
+	"ref": "github.com/P-f1/LC1/activity/exec",
 	"settings": [
 		{
         		"name": "execConnection",

@@ -15,7 +15,7 @@ import (
 	"github.com/TIBCOSoftware/flogo-lib/core/data"
 	"github.com/TIBCOSoftware/flogo-lib/logger"
 
-	"github.com/P-f1/LC/labs-graphbuilder-lib/util"
+	"github.com/P-f1/LC/common/util"
 )
 
 // activityLogger is the default logger for the Filter Activity
