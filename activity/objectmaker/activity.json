@@ -1,7 +1,7 @@
 {
 	"name": "flogo-objectmaker",
 	"type": "flogo:activity",
-	"ref": "github.com/P-f1/LC1/trigger/objectmaker",
+	"ref": "github.com/P-f1/LC1/activity/objectmaker",
 	"version": "0.0.1",
 	"title": "LC1",
 	"display": {

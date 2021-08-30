@@ -1,4 +1,4 @@
-module github.com/P-f1/LC1/trigger/httpclient
+module github.com/P-f1/LC1/activity/httpclient
 
 go 1.14
 

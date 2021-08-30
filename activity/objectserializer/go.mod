@@ -1,4 +1,4 @@
-module github.com/P-f1/LC1/trigger/objectserializer
+module github.com/P-f1/LC1/activity/objectserializer
 
 go 1.14
 

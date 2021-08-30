@@ -1,4 +1,4 @@
-module github.com/P-f1/LC1/trigger/jsonserializer
+module github.com/P-f1/LC1/activity/jsonserializer
 
 go 1.14
 

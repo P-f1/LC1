@@ -1,4 +1,4 @@
-module github.com/P-f1/LC1/trigger/objectmaker
+module github.com/P-f1/LC1/activity/objectmaker
 
 go 1.14
 

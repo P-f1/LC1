@@ -1,7 +1,7 @@
 {
 	"name": "objectserializer",
 	"type": "flogo:activity",
-	"ref": "github.com/P-f1/LC1/trigger/objectserializer",
+	"ref": "github.com/P-f1/LC1/activity/objectserializer",
 	"version": "0.0.1",
 	"title": "Object Serializer",
 	"display": {

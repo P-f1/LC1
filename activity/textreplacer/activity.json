@@ -1,7 +1,7 @@
 {
 	"name": "flogo-textreplacer",
 	"type": "flogo:activity",
-	"ref": "github.com/P-f1/LC1/trigger/textreplacer",
+	"ref": "github.com/P-f1/LC1/activity/textreplacer",
 	"version": "0.0.1",
 	"title": "Text Replacer",
 	"display": {

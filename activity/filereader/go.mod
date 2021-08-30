@@ -1,4 +1,4 @@
-module github.com/P-f1/LC1/trigger/filereader
+module github.com/P-f1/LC1/activity/filereader
 
 go 1.14
 

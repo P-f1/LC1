@@ -1,4 +1,4 @@
-module github.com/P-f1/LC1/trigger/textreplacer
+module github.com/P-f1/LC1/activity/textreplacer
 
 go 1.14
 

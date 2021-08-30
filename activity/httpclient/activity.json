@@ -10,7 +10,7 @@
        "smallIcon": "httpclient.png",
        "description": "This activity build docker image from Dockerfile"
     },
-	"ref": "github.com/P-f1/LC1/trigger/httpclient",
+	"ref": "github.com/P-f1/LC1/activity/httpclient",
 	"settings": [
     	{
 			"name": "method",

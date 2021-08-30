@@ -12,7 +12,7 @@
        "description": "This activity write incoming object to file system"
     },
  
-    "ref": "github.com/P-f1/LC1/trigger/filewriter",
+    "ref": "github.com/P-f1/LC1/activity/filewriter",
     "settings": [
     		{
 			"name": "inputType",

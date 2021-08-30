@@ -1,7 +1,7 @@
 {
 	"name": "flogo-jsondeserializer",
 	"type": "flogo:activity",
-	"ref": "github.com/P-f1/LC1/trigger/jsondeserializer",
+	"ref": "github.com/P-f1/LC1/activity/jsondeserializer",
 	"version": "0.0.1",
 	"title": "JSON Deserializer",
 	"display": {

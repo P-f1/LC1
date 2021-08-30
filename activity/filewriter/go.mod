@@ -1,4 +1,4 @@
-module github.com/P-f1/LC1/trigger/filewriter
+module github.com/P-f1/LC1/activity/filewriter
 
 go 1.14
 

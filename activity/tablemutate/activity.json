@@ -1,7 +1,7 @@
 {
 	"name": "flogo-tablemutate",
 	"type": "flogo:activity",
-	"ref": "github.com/P-f1/LC1/trigger/tablemutate",
+	"ref": "github.com/P-f1/LC1/activity/tablemutate",
 	"version": "0.0.1",
 	"title": "Table Mutate",
 	"display": {

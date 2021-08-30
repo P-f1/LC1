@@ -1,7 +1,7 @@
 {
 	"name": "flogo-jsonserializer",
 	"type": "flogo:activity",
-	"ref": "github.com/P-f1/LC1/trigger/jsonserializer",
+	"ref": "github.com/P-f1/LC1/activity/jsonserializer",
 	"version": "0.0.1",
 	"title": "JSON Serializer",
 	"display": {

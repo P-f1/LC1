@@ -10,7 +10,7 @@
        "smallIcon": "properties2object.png",
        "description": "This activity convert f1 key/value to golang object format"
     },
-	"ref": "github.com/P-f1/LC1/trigger/properties2object",
+	"ref": "github.com/P-f1/LC1/activity/properties2object",
 	"settings": [
 		{
 			"name": "defOverrideProperties",

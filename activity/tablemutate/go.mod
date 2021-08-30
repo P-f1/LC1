@@ -1,4 +1,4 @@
-module github.com/P-f1/LC1/trigger/tablemutate
+module github.com/P-f1/LC1/activity/tablemutate
 
 go 1.14
 

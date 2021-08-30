@@ -1,4 +1,4 @@
-module github.com/P-f1/LC1/trigger/properties2object
+module github.com/P-f1/LC1/activity/properties2object
 
 go 1.14
 
