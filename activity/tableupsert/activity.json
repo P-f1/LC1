@@ -1,11 +1,11 @@
 {
 	"name": "flogo-tableupsert",
 	"type": "flogo:activity",
-	"ref": "github.com/P-f1/LC1/GraphBuilder_Tools/activity/tableupsert",
+	"ref": "github.com/P-f1/LC1/activity/tableupsert",
 	"version": "0.0.1",
 	"title": "Table Upsert",
 	"display": {
-    		"category": "GraphBuilder_Tools",
+    		"category": "LC1",
     		"visible": true,
     		"smallIcon": "tableupsert.png",
   		"description": "A simple activity for upserting data to table"
