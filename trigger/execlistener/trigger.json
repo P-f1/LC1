@@ -1,0 +1,36 @@
+{
+	"name": "execlistener",
+	"type": "flogo:trigger",
+	"ref": "github.com/P-f1/LC1/trigger/execlistener",
+	"version": "0.0.1",
+	"title": "ExecEventListener",
+	"description": "Exec event listener",
+	"homepage": "github.com/P-f1/LC1/trigger/execlistener",
+	"display": {
+		"category": "LC1",
+		"visible": true,
+		"smallIcon": "execlistener.png",
+		"description": "This trigger serves server-sent events"
+	},
+    "outputs": [
+		{
+            "name": "Event",
+            "type": "object"
+		}
+    ],
+	"handler": {
+		"settings": [
+			{
+        		"name": "execConnection",
+        		"type": "object",
+        		"required": true,
+        		"display":{
+        			"name": "Execution Event Connection",
+        			"description": "Select Execution Event Connection",
+        			"type": "connection"
+        		},
+        		"allowed":[]
+			}
+		]
+	}
+}
