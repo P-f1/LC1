@@ -10,7 +10,7 @@
        "smallIcon": "pipelinespliter.png",
        "description": "This activity split flogo flow pipeline"
     },
-	"ref": "github.com/P-f1/LC/ModelOps/activity/pipelinespliter",
+	"ref": "github.com/P-f1/LC1/ModelOps/activity/pipelinespliter",
 	"settings": 	[{ 
 		"name": "Template",
 		"type": "string", 

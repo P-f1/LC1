@@ -11,7 +11,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/P-f1/LC/trigger/rest/cors"
+	"github.com/P-f1/LC1/trigger/rest/cors"
 	"github.com/julienschmidt/httprouter"
 	"github.com/project-flogo/core/data/metadata"
 	"github.com/project-flogo/core/support/log"

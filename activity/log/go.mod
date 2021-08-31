@@ -1,4 +1,4 @@
-module github.com/P-f1/LC/activity/log
+module github.com/P-f1/LC1/activity/log
 
 require (
 	github.com/pkg/errors v0.9.1 // indirect

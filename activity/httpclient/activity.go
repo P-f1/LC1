@@ -16,8 +16,8 @@ import (
 
 	"github.com/TIBCOSoftware/flogo-lib/core/activity"
 	"github.com/TIBCOSoftware/flogo-lib/logger"
-	kwr "github.com/P-f1/LC/labs-flogo-lib/keywordreplace"
-	"github.com/P-f1/LC/labs-flogo-lib/util"
+	kwr "github.com/P-f1/LC1/labs-flogo-lib/keywordreplace"
+	"github.com/P-f1/LC1/labs-flogo-lib/util"
 )
 
 var log = logger.GetLogger("tibco-model-ops-httpclient")

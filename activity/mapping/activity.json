@@ -1,7 +1,7 @@
 {
 	"name": "flogo-mapping",
 	"type": "flogo:activity",
-	"ref": "github.com/P-f1/LC/activity/mapping",
+	"ref": "github.com/P-f1/LC1/activity/mapping",
 	"version": "0.0.1",
 	"title": "Mapping",
 	"display": {

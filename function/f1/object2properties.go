@@ -3,7 +3,7 @@ package f1
 import (
 	"strings"
 
-	"github.com/P-f1/LC/common/util"
+	"github.com/P-f1/LC1/common/util"
 	"github.com/project-flogo/core/data"
 	"github.com/project-flogo/core/data/expression/function"
 )

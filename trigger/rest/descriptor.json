@@ -4,7 +4,7 @@
   "version": "0.10.0",
   "title": "Receive HTTP Message",
   "description": "Simple REST Trigger",
-  "homepage": "https://github.com/P-f1/LC/trigger/rest",
+  "homepage": "https://github.com/P-f1/LC1/trigger/rest",
   "settings": [
     {
       "name": "port",

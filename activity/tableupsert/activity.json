@@ -1,7 +1,7 @@
 {
 	"name": "flogo-tableupsert",
 	"type": "flogo:activity",
-	"ref": "github.com/P-f1/LC/GraphBuilder_Tools/activity/tableupsert",
+	"ref": "github.com/P-f1/LC1/GraphBuilder_Tools/activity/tableupsert",
 	"version": "0.0.1",
 	"title": "Table Upsert",
 	"display": {

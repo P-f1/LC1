@@ -1,7 +1,7 @@
 package f1
 
 import (
-	kwr "github.com/P-f1/LC/common/keywordreplace"
+	kwr "github.com/P-f1/LC1/common/keywordreplace"
 	"github.com/project-flogo/core/data"
 	"github.com/project-flogo/core/data/expression/function"
 )

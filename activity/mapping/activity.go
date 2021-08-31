@@ -8,7 +8,7 @@ package mapping
 import (
 	"sync"
 
-	"github.com/P-f1/LC/common/util"
+	"github.com/P-f1/LC1/common/util"
 	"github.com/TIBCOSoftware/flogo-lib/core/activity"
 	"github.com/TIBCOSoftware/flogo-lib/logger"
 )

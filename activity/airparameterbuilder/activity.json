@@ -10,7 +10,7 @@
        "smallIcon": "airparameterbuilder.png",
        "description": "This activity build application pipeline"
     },
-	"ref": "github.com/P-f1/LC/ModelOps/activity/airparameterbuilder",
+	"ref": "github.com/P-f1/LC1/ModelOps/activity/airparameterbuilder",
 	"settings": 	[
 		{ 
 			"name": "TemplateFolder",
