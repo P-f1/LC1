@@ -1,4 +1,4 @@
-module github.com/P-f1/LC1/GraphBuilder_Tools/activity/mapping
+module github.com/P-f1/LC1/activity/mapping
 
 go 1.14
 
