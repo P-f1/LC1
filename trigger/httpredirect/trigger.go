@@ -35,10 +35,6 @@ func init() {
 //     Define Trigger Factory
 //-===============================-//
 
-func NewFactory(md *trigger.Metadata) Factory {
-	return Factory{}
-}
-
 type Factory struct {
 }
 
