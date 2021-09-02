@@ -35,7 +35,7 @@ func init() {
 //     Define Trigger Factory
 //-===============================-//
 
-func NewFactory(md *Metadata) {
+func NewFactory(md *trigger.Metadata) Factory {
 	return Factory{}
 }
 
