@@ -1,11 +1,11 @@
 {
 	"name": "fileserver",
 	"type": "flogo:trigger",
-	"ref": "github.com/P-f1/LC1/ModelOps/trigger/fileserver",
+	"ref": "github.com/P-f1/LC1/trigger/fileserver",
 	"version": "0.0.1",
 	"title": "HTTP file server",
 	"description": "This trigger server file via HTTP protocol",
-	"homepage": "https://github.com/P-f1/LC1/ModelOps/trigger/fileserver",
+	"homepage": "https://github.com/P-f1/LC1/trigger/fileserver",
 	"display": {
 		"category": "ModelOps",
 		"visible": true,

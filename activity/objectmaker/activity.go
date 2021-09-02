@@ -8,9 +8,9 @@ package objectmaker
 import (
 	"strings"
 
+	"github.com/P-f1/LC1/common/util"
 	"github.com/TIBCOSoftware/flogo-lib/core/activity"
 	"github.com/TIBCOSoftware/flogo-lib/logger"
-	"github.com/P-f1/LC1/labs-flogo-lib/util"
 )
 
 // activityLogger is the default logger for the Filter Activity
