@@ -9,9 +9,9 @@ import (
 	"context"
 	"sync"
 
+	"github.com/P-f1/LC1/common/exec/execeventbroker"
 	"github.com/TIBCOSoftware/flogo-lib/core/activity"
 	"github.com/TIBCOSoftware/flogo-lib/core/data"
-	"github.com/P-f1/LC1/labs-flogo-lib/exec/execeventbroker"
 	"github.com/project-flogo/core/data/metadata"
 	"github.com/project-flogo/core/support/log"
 	"github.com/project-flogo/core/trigger"
