@@ -81,6 +81,7 @@ func (this *Trigger) Start() error {
 	logger.Info("Start HTTPFileHandler : subhandlers =  ", this.handlers)
 
 	for _, handler := range this.handlers {
+		logger.Info("handler: ", handler)
 
 		handlerSetting := &HandlerSettings{}
 		err := metadata.MapToStruct(handler.Settings(), handlerSetting, true)

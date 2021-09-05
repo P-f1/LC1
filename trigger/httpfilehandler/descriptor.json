@@ -4,8 +4,8 @@
 	"version": "0.0.1",
 	"title": "HTTPFileHandler",
 	"description": "HTTP File Handler",
-	"ref": "github.com/P-f1/LC1/GraphBuilder_Tools/trigger/httpfilehandler",
-	"homepage": "https://github.com/P-f1/LC1/GraphBuilder_Tools/trigger/httpfilehandler",
+	"ref": "github.com/P-f1/LC1/trigger/httpfilehandler",
+	"homepage": "https://github.com/P-f1/LC1/trigger/httpfilehandler",
 	"display": {
 		"category": "GraphBuilder_Tools",
 		"visible": true,

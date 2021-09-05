@@ -1,4 +1,4 @@
-package tcpserver
+package fileserver
 
 import (
 	"github.com/project-flogo/core/data/coerce"
