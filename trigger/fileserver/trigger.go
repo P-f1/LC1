@@ -77,7 +77,7 @@ func (this *TcpServer) Start() error {
 		}
 
 		//		http.HandleFunc("/upload", uploadFileHandler())
-		http.Handle(handlerSetting.URLPath, http.FileServer(http.Dir(handlerSetting.Dir)))
+		//http.Handle(handlerSetting.URLPath, http.FileServer(http.Dir(handlerSetting.Dir)))
 		http.Handle(handlerSetting.URLPath, http.StripPrefix(handlerSetting.URLPath, http.FileServer(http.Dir(handlerSetting.Dir))))
 		logger.Info("(Start) Started URLPath = ", handlerSetting.URLPath, ", Dir = ", handlerSetting.Dir, ", port = ", this.settings.Port)
 		logger.Infof("Serving %s on HTTP port: %s\n", handlerSetting.Dir, this.settings.Port)
