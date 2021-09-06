@@ -10,7 +10,7 @@
        "smallIcon": "airpipelinebuilder.png",
        "description": "This activity build model inference pipeline"
     },
-	"ref": "github.com/P-f1/LC1/ModelOps/activity/airpipelinebuilder",
+	"ref": "github.com/P-f1/LC1/activity/airpipelinebuilder",
 	"settings": 	[
 		{ 
 			"name": "TemplateFolder",

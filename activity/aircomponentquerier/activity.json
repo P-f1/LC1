@@ -10,7 +10,7 @@
        "smallIcon": "aircomponentquerier.png",
        "description": "This activity query air pipeline compoment"
     },
-	"ref": "github.com/P-f1/LC1/ModelOps/activity/aircomponentquerier",
+	"ref": "github.com/P-f1/LC1/activity/aircomponentquerier",
 	"settings": 	[
 		{ 
 			"name": "TemplateFolder",
