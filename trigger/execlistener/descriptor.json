@@ -20,13 +20,13 @@
 	"handler": {
 		"settings": [
 			{
-        		"name": "execConnection",
-        		"type": "object",
+        		"name": "eventBoker",
+        		"type": "string",
         		"required": true,
         		"display":{
-        			"name": "Execution Event Connection",
-        			"description": "Select Execution Event Connection",
-        			"type": "connection"
+        			"name": "Execution Event Broker",
+        			"description": "Select Execution Event Broker",
+        			"type": "string"
         		},
         		"allowed":[]
 			}

@@ -1,14 +1,10 @@
 package execlistener
 
-import (
-	"github.com/project-flogo/core/support/connection"
-)
-
 type Settings struct {
 }
 
 type HandlerSettings struct {
-	Connection connection.Manager `md:"execConnection,required"`
+	EventBoker string `md:"eventBoker,required"` // Execution Event Broker
 }
 
 type Output struct {

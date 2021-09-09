@@ -10,16 +10,13 @@ import (
 	"sync"
 
 	"github.com/P-f1/LC1/common/exec/execeventbroker"
-	"github.com/TIBCOSoftware/flogo-lib/core/activity"
-	"github.com/TIBCOSoftware/flogo-lib/core/data"
 	"github.com/project-flogo/core/data/metadata"
 	"github.com/project-flogo/core/support/log"
 	"github.com/project-flogo/core/trigger"
 )
 
 const (
-	cConnection     = "execConnection"
-	cConnectionName = "name"
+	EVENT_BROKER = "eventBoker"
 )
 
 //-============================================-//
@@ -64,7 +61,7 @@ var logger log.Logger
 type ExecListener struct {
 	metadata *trigger.Metadata
 	config   *trigger.Config
-	server   *execeventbroker.EXEEventBroker
+	broker   *execeventbroker.EXEEventBroker
 	mux      sync.Mutex
 
 	settings *Settings
@@ -88,40 +85,20 @@ func (this *ExecListener) Start() error {
 
 	logger.Info("Processing handlers")
 
-	connection, exist := handlers[0].Settings()[cConnection]
-	if !exist {
-		return activity.NewError("SSE connection is not configured", "TGDB-SSE-4001", nil)
-	}
-
-	connectionInfo, _ := data.CoerceToObject(connection)
-	if connectionInfo == nil {
-		return activity.NewError("SSE connection not able to be parsed", "TGDB-SSE-4002", nil)
-	}
-
-	var serverId string
-	connectionSettings, _ := connectionInfo["settings"].([]interface{})
-	if connectionSettings != nil {
-		for _, v := range connectionSettings {
-			setting, err := data.CoerceToObject(v)
-			if nil != err {
-				continue
-			}
-
-			if nil != setting {
-				if setting["name"] == cConnectionName {
-					serverId = setting["value"].(string)
-				}
-			}
-
+	for _, handler := range handlers {
+		brokerId, exist := handler.Settings()[EVENT_BROKER]
+		if !exist {
+			logger.Info("EXE event broker is not configured", "TGDB-EXE-4001", nil)
+			continue
 		}
 
 		var err error
-		this.server, err = execeventbroker.GetFactory().CreateEXEEventBroker(serverId, this)
+		this.broker, err = execeventbroker.GetFactory().CreateEXEEventBroker(brokerId.(string), this)
 		if nil != err {
 			return err
 		}
-		logger.Info("Server = ", *this.server)
-		go this.server.Start()
+		logger.Info("Server = ", *this.broker)
+		go this.broker.Start()
 	}
 
 	return nil
@@ -129,7 +106,7 @@ func (this *ExecListener) Start() error {
 
 // implements ext.Trigger.Stop
 func (this *ExecListener) Stop() error {
-	this.server.Stop()
+	this.broker.Stop()
 	return nil
 }
 
