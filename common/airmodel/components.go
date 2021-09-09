@@ -69,7 +69,7 @@ func (this DataSource) Build(subflowID string) {
 	log.Info(">>>>>>>>>> links >>>>>>>>>>>>> links = ", links)
 	_ = objectbuilder.SetObject(
 		this.data, "root.resources[0].data.tasks[0].activity.input.message",
-		fmt.Sprintf("=string.concat(\"########## DataSource ##########\", string.tostring($flow.data))"))
+		fmt.Sprintf("=string.concat(\"########## DataSource ##########\", coerce.toString($flow.data))"))
 	//_ = objectbuilder.SetObject(this.subflowActivity, "root.activity.settings.flowURI", fmt.Sprintf("res://flow:%s", subflowID))
 	_ = objectbuilder.SetObject(this.data, "root.resources[0].data.links[]", links)
 	//_ = objectbuilder.SetObject(this.data, "root.resources[0].data.tasks[]", activities)
@@ -376,8 +376,8 @@ func (this Logic) Build(subflowID string, last bool) {
 	if "Dummy" != this.name {
 		_ = objectbuilder.SetObject(
 			this.data, "root.resources[0].data.tasks[0].activity.input.message",
-			//fmt.Sprintf("=string.concat(\"########## %s_%d(%s) ########## : gateway = \", $flow.gateway, \", reading = \", string.tostring($flow.reading), \", enriched = \", string.tostring($flow.enriched))", this.category, this.sn, this.name))
-			fmt.Sprintf("=string.concat(\"########## %s_%d(%s) ########## : gateway = \", $flow.gateway, \", reading = { ... }, enriched = \", string.tostring($flow.enriched))", this.category, this.sn, this.name))
+			//fmt.Sprintf("=string.concat(\"########## %s_%d(%s) ########## : gateway = \", $flow.gateway, \", reading = \", coerce.toString($flow.reading), \", enriched = \", coerce.toString($flow.enriched))", this.category, this.sn, this.name))
+			fmt.Sprintf("=string.concat(\"########## %s_%d(%s) ########## : gateway = \", $flow.gateway, \", reading = { ... }, enriched = \", coerce.toString($flow.enriched))", this.category, this.sn, this.name))
 	}
 	this.addNamespace4Properties(fmt.Sprintf("%s_%d", this.category, this.sn))
 }
