@@ -6,7 +6,7 @@
 	"version": "1.0.0",
 	"display": {
 		"description": "This connector link exec and execlistener",
-       "category": "ModelOps",
+       "category": "LC1",
 		"visible": true,
 		"smallIcon": "exec.png"
 	},

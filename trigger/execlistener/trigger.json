@@ -5,7 +5,6 @@
 	"version": "0.0.1",
 	"title": "ExecEventListener",
 	"description": "Exec event listener",
-	"homepage": "github.com/P-f1/LC1/trigger/execlistener",
 	"display": {
 		"category": "LC1",
 		"visible": true,
